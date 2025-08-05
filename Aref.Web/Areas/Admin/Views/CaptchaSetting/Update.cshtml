@@ -1,0 +1,53 @@
+﻿@using Aref.Application.Extensions
+@using Aref.Domain.Enums.Captcha
+@model Aref.Domain.ViewModels.CaptchaSetting.AdminUpdateCaptchaSettingViewModel
+
+@{
+    ViewData["Title"] = "Captcha Setting";
+}
+
+@section Breadcrumb
+{
+    <admin-breadcrumb page-title="@ViewData["Title"]">
+        <admin-breadcrumb-item last-active-item="true">Update</admin-breadcrumb-item>
+    </admin-breadcrumb>
+}
+
+<div class="row">
+    <form asp-area="Admin"
+          asp-controller="CaptchaSetting"
+          asp-action="Update"
+          method="post">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body row">
+                    
+                    @for (var i = 0; i < Model.CaptchaSettings.Count; i++)
+                    {
+                        <input type="hidden" asp-for="CaptchaSettings[i].CaptchaSection" value="@Model.CaptchaSettings[i].CaptchaSection" />
+                        <div class="col-md-3 col-12">
+                            <div class="form-group">
+                                <label asp-for="CaptchaSettings[i].CaptchaType" class="form-label">@Model.CaptchaSettings[i].CaptchaSection.GetEnumName()</label>
+                                <select class="form-select" asp-for="CaptchaSettings[i].CaptchaType">
+                                    @foreach (var type in Enum.GetValues(typeof(CaptchaType)).Cast<CaptchaType>().ToList())
+                                    {
+                                        <option value="@type" selected="@(Model.CaptchaSettings[i].CaptchaType == type)">@type.GetEnumName()</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-end gap-2">
+                        <button type="submit" class="btn btn-outline-success">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

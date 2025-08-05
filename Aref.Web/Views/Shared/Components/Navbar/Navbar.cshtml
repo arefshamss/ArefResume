@@ -1,0 +1,51 @@
+﻿@using Aref.Application.Extensions
+@using Aref.Domain.Enums.PageContent
+@model Aref.Domain.ViewModels.PageContentSetting.Admin.AdminUpdatePageContentSettingViewModel
+
+<div class="position-sticky sticky-top tmp-sticky-top w-100">
+    <ul class="tab-navigation-button style-2 nav tab-smlg nav-pills" id="v-pills-tab" role="tablist">
+
+        @if (Model.AboutMeVisibility)
+        {
+            <li class="nav-item">
+                <a class="nav-link tmp-nav active text-nowrap" id="v-pills-home-tab" data-bs-toggle="tab"
+                   href="index-10.html#v-pills-Javascript" role="tab"
+                   aria-selected="true">@PageContentType.AboutMe.GetEnumName()</a>
+            </li>
+        }
+        @if (Model.MyResumeVisibility)
+        {
+            <li class="nav-item">
+                <a class="nav-link tmp-nav text-nowrap" id="v-pills-profile-tab" data-bs-toggle="tab"
+                   href="index-10.html#v-pills-Design" role="tab"
+                   aria-selected="true">@PageContentType.MyResume.GetEnumName()</a>
+            </li>
+        }
+        @if (Model.MySkillVisibility)
+        {
+            <li class="nav-item">
+                <a class="nav-link tmp-nav text-nowrap" id="v-pills-wordpress-tab" data-bs-toggle="tab"
+                   href="index-10.html#v-pills-Wordpress" role="tab"
+                   aria-selected="true">@PageContentType.MySkill.GetEnumName()</a>
+            </li>
+        }
+        @if (Model.MyProjectVisibility)
+        {
+            <li class="nav-item">
+                <a class="nav-link tmp-nav text-nowrap" id="v-pills-settings-tabs" data-bs-toggle="tab"
+                   href="index-10.html#v-pills-settings" role="tab"
+                   aria-selected="true">@PageContentType.MyProject.GetEnumName()</a>
+            </li>
+        }
+        @if (Model.ContactMeVisibility)
+        {
+            
+            <li class="nav-item">
+                <a class="nav-link tmp-nav text-nowrap" id="v-pills-python-tabs" data-bs-toggle="tab"
+                   href="index-10.html#v-pills-python" role="tab"
+                   aria-selected="true">@PageContentType.ContactMe.GetEnumName()</a>
+            </li>
+        }
+        
+    </ul>
+</div>

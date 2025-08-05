@@ -1,0 +1,62 @@
+﻿@using Aref.Application.Statics
+@using Aref.Domain.Enums.Common
+@using Aref.Domain.ViewModels.SocialMedia.Client
+@model Aref.Domain.ViewModels.MyInfo.Admin.AdminUpdateMyInfoViewModel
+
+
+
+<div class="col-xxl-3 col-lg-12">
+    <div class="d-flex flex-wrap align-content-start h-100 w-100 tab-content-overlay-to-top" id="home">
+        <div class="position-sticky sticky-top tmp-sticky-top w-100">
+            <div class="tmp-contact-about-inner">
+                <div class="thumbnail">
+                    <img src="@Model.ImageUrl" alt="contact-img">
+                </div>
+                <div class="content">
+                    <div class="title-area">
+                        <h4 class="title">@Model.FullName</h4>
+                        @if (Model.TitleVisibility)
+                        {
+                            <span class="subtitle">@Model.Title</span>
+                        }
+                    </div>
+                @if (Model.MobileVisibility || Model.EmailVisibility)
+                    {
+                        <div class="description">
+                            <div class="info-box">
+                                @if (Model.MobileVisibility)
+                                {
+                                    <span class="phone">Phone: <a href="tel:@Model.Mobile">@Model.Mobile</a></span>
+                                }
+                                @if (Model.EmailVisibility)
+                                {
+                                    <span class="mail">Email: <a href="mailto:@Model.Email">@Model.Email</a></span>
+                                }
+                            </div>
+                        </div>
+                    }
+                    @await Component.InvokeAsync("SocialMedia", new ClientFilterSocialMediaViewModel { DeleteStatus = DeleteStatus.NotDeleted })
+                    
+                    @if (Model.CvVisibility)
+                    {
+                        <div class="button-area-banner-one text-xl-center">
+                            <a class="tmp-btn hover-icon-reverse radius-round download-icon" target="_blank" href="@(FilePaths.MyInfoFilePath + Model.CvUrl)">
+                                <span class="icon-reverse-wrapper">
+                                    <span class="btn-text">Download My CV</span>
+                                    <span class="btn-icon"><i class="fa-regular fa-arrow-down"></i></span>
+                                    <span class="btn-icon"><i class="fa-regular fa-arrow-down"></i></span>
+                                </span>
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@* <div class="pt-home" style="background-image: url('@await Component.InvokeAsync("SiteBackgroundImage")')"></div> *@
+

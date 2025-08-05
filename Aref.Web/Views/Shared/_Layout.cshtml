@@ -1,0 +1,237 @@
+﻿@using Aref.Domain.Enums.Common
+@using Aref.Domain.Enums.MyResume
+@using Aref.Domain.ViewModels.CounterBox.Client
+@using Aref.Domain.ViewModels.MyProject.Client
+@using Aref.Domain.ViewModels.MyResume.Client
+@using Aref.Domain.ViewModels.MyService.Client
+@using Aref.Domain.ViewModels.MySkill.Client
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <partial name="_MetaTags"/>
+    <partial name="_HeaderReferencesPartial"/>
+</head>
+
+<body class="spybody index-ten" data-spy="scroll" data-bs-target=".navbar-example2" data-offset="70">
+<div class="tmp-breadcrumb-image">
+    <div class="h-100">
+        <img src="/Site/assets/images/bg/bg-image-13.png" alt="bgImage"/>
+    </div>
+    @* <div id="particles-js"></div> *@
+</div>
+
+<div class="cv-card-area">
+    <div class="plr--150 plr_lg--30 plr_md--30 plr_sm--30 plr_mobile--15">
+        <div class="row row--25">
+
+            @RenderBody()
+            @await Component.InvokeAsync("MyInfo")
+            <div class="col-xxl-9 col-lg-12">
+                <div class="tab-wrapper-overlay-to-top">
+                    @await Component.InvokeAsync("Navbar")
+
+                    <div class="tmp-tab-content-area mt--40">
+                        <div class="tmp-all-tab-content tab-content" id="v-pills-tabContent">
+
+                            <div class="tab-pane fade  show active" id="v-pills-Javascript" role="tabpanel"
+                                 aria-labelledby="v-pills-home-tab">
+                                <!-- Start about Area -->
+                                <div id="about" class="tmp-about-area">
+                                    <div class="about-us-right-content-wrap">
+
+                                        @await Component.InvokeAsync("PageContent", new { id = (short)1 })
+
+                                        @await Component.InvokeAsync("MyService", new ClientFilterMyServiceViewModel() { DeleteStatus = DeleteStatus.NotDeleted })
+
+                                        @await Component.InvokeAsync("CounterBox", new ClientFilterCounterBoxViewModel() { DeleteStatus = DeleteStatus.NotDeleted })
+
+                                    </div>
+                                </div>
+                                <!-- End about Area -->
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-Design" role="tabpanel"
+                                 aria-labelledby="v-pills-profile-tab">
+                                <div class="tmp-resume-area" id="resume">
+                                    <div class="inner">
+                                        <div class="section-head text-align-left mb--50">
+
+                                            @await Component.InvokeAsync("PageContent", new { id = (short)2 })
+
+                                            @* @await Component.InvokeAsync("MyResume", new ClientFilterMyResumeViewModel() { DeleteStatus = DeleteStatus.NotDeleted, ResumeType = MyResumeType.Education }) *@
+
+                                        </div>
+                                    </div>
+
+                                    @await Component.InvokeAsync("MyResume", new ClientFilterMyResumeViewModel() { DeleteStatus = DeleteStatus.NotDeleted, ResumeType = FilterMyResumeType.None })
+
+                                    @await Component.InvokeAsync("MyResume", new ClientFilterMyResumeViewModel() { DeleteStatus = DeleteStatus.NotDeleted, ResumeType = FilterMyResumeType.Education })
+
+                                    @await Component.InvokeAsync("MyResume", new ClientFilterMyResumeViewModel() { DeleteStatus = DeleteStatus.NotDeleted, ResumeType = FilterMyResumeType.Experience })
+
+                                    @await Component.InvokeAsync("MyResume", new ClientFilterMyResumeViewModel() { DeleteStatus = DeleteStatus.NotDeleted, ResumeType = FilterMyResumeType.Courses })
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-Wordpress" role="tabpanel"
+                                 aria-labelledby="v-pills-wordpress-tab">
+                                <!-- Start Portfolio Area -->
+                                <div class="tmp-portfolio-area" id="portfolio">
+                                    <div class="inner">
+                                        @await Component.InvokeAsync("PageContent", new { id = (short)3 })
+
+                                        @await Component.InvokeAsync("MySkill", new ClientFilterMySkillViewModel() { DeleteStatus = DeleteStatus.NotDeleted })
+
+                                    </div>
+                                </div>
+                                <!-- End portfolio Area -->
+
+
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
+                                 aria-labelledby="v-pills-settings-tabs">
+                                <!-- Start News Area -->
+                                <div class="tmp-blog-area" id="blog">
+                                    <div class="inner">
+
+                                        @await Component.InvokeAsync("PageContent", new { id = (short)4 })
+
+                                        @await Component.InvokeAsync("MyProject", new ClientFilterMyProjectViewModel() { DeleteStatus = DeleteStatus.NotDeleted })
+
+                                    </div>
+                                </div>
+                                <!-- ENd Mews Area -->
+                            </div>
+
+                            <div class="tab-pane fade" id="v-pills-python" role="tabpanel"
+                                 aria-labelledby="v-pills-python-tabs">
+                                <!-- Start Contact section -->
+
+
+                                <div class="tmp-contact-area" id="contacts">
+                                    <div class="inner">
+                                        <div class="contact-get-in-touch-wrap">
+                                            @await Component.InvokeAsync("PageContent", new { id = (short)5 })
+
+                                            <partial name="~/Views/ContactMe/_CreateContactMe.cshtml"/>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Contuct section -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Start Footer Area  -->
+<div class="tmp-footer-area footer-style-4 tmp-section-gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="footer-area text-center">
+                    <p class="description mt--30">©
+                        <script>
+                            document.write(new Date().getFullYear())
+                        </script>
+                        . All rights reserved by <a target="_blank" href="https://www.arefshams.info">arefshams.info.</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Footer Area  -->
+
+
+<!-- ready chatting option via email -->
+@* <div class="ready-chatting-option tmp-ready-chat"> *@
+@*     <input type="checkbox" id="click"> *@
+@*     <label for="click"> *@
+@*         <i class="fab fa-facebook-messenger"></i> *@
+@*         <i class="fas fa-times"></i> *@
+@*     </label> *@
+@*     <div class="wrapper"> *@
+@*         <div class="head-text"> *@
+@*             Let's chat with me? - Online *@
+@*         </div> *@
+@*         <div class="chat-box"> *@
+@*             <div class="desc-text"> *@
+@*                 Please fill out the form below to start chatting with me directly. *@
+@*             </div> *@
+@*             <form class="tmp-dynamic-form" action="index-10.html#"> *@
+@*                 <div class="field"> *@
+@*                     <input class="input-field" name="name" placeholder="Your Name" type="text" required> *@
+@*                 </div> *@
+@*                 <div class="field"> *@
+@*                     <input class="input-field" name="email" placeholder="Your Email" type="email" required> *@
+@*                 </div> *@
+@*                 <div class="field textarea"> *@
+@*                     <textarea class="input-field" placeholder="Your Message" name="message" required></textarea> *@
+@*                 </div> *@
+@*                 <div class="field"> *@
+@*                     <button name="submit" type="submit">Send Message</button> *@
+@*                 </div> *@
+@*             </form> *@
+@*         </div> *@
+@*     </div> *@
+@* </div> *@
+<!-- ready chatting option via email end -->
+<!-- progress area start -->
+<div class="scrollToTop" style="display: block;">
+    <div class="arrowUp">
+        <i class="fa-light fa-arrow-up"></i>
+    </div>
+    <div class="water" style="transform: translate(0px, 87%);">
+        <svg viewBox="0 0 560 20" class="water_wave water_wave_back">
+            <use xlink:href="#wave"></use>
+        </svg>
+        <svg viewBox="0 0 560 20" class="water_wave water_wave_front">
+            <use xlink:href="#wave"></use>
+        </svg>
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             viewBox="0 0 560 20" style="display: none;">
+            <symbol id="wave">
+                <path
+                    d="M420,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C514,6.5,518,4.7,528.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H420z"
+                    fill="#"></path>
+                <path
+                    d="M420,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C326,6.5,322,4.7,311.5,2.7C304.3,1.4,293.6-0.1,280,0c0,0,0,0,0,0v20H420z"
+                    fill="#"></path>
+                <path
+                    d="M140,20c21.5-0.4,38.8-2.5,51.1-4.5c13.4-2.2,26.5-5.2,27.3-5.4C234,6.5,238,4.7,248.5,2.7c7.1-1.3,17.9-2.8,31.5-2.7c0,0,0,0,0,0v20H140z"
+                    fill="#"></path>
+                <path
+                    d="M140,20c-21.5-0.4-38.8-2.5-51.1-4.5c-13.4-2.2-26.5-5.2-27.3-5.4C46,6.5,42,4.7,31.5,2.7C24.3,1.4,13.6-0.1,0,0c0,0,0,0,0,0l0,20H140z"
+                    fill="#"></path>
+            </symbol>
+        </svg>
+
+    </div>
+</div>
+<!-- progress area end -->
+
+
+<!-- change region -->
+@* <div class="tmp-right-demo"> *@
+@* <button class="demo-button"> *@
+@*     <p class="mb--0">48</p> *@
+@*     <span class="text">Demos</span> *@
+@* </button> *@
+@* </div> *@
+
+
+
+<partial name="_FooterReferencesPartial"/>
+<partial name="_ModalPartial"/>
+@await RenderSectionAsync("Scripts", false)
+</body>
+
+</html>

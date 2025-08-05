@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme" data-layout="vertical">
+<head>
+    <partial name="~/Areas/Admin/Views/Shared/_MetaTags.cshtml"/>
+    <partial name="~/Areas/Admin/Views/Shared/_HeaderReferencesPartial.cshtml"/>
+    @await RenderSectionAsync("Styles", false)
+    <title>Aref | @ViewData["Title"]</title>
+</head>
+<body>
+
+<div class="preloader">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+<div id="main-wrapper">
+    <partial name="_AdminSidebarPartial"/>
+    <div class="page-wrapper">
+        <partial name="~/Areas/Admin/Views/Shared/_HeaderPartial.cshtml"/>
+
+        <div class="body-wrapper">
+            <div class="container-fluid pb-0">
+                @await RenderSectionAsync("Breadcrumb", true)
+            </div>
+            <div class="container-fluid" id="render-body">
+                @RenderBody()
+            </div>
+        </div>
+        <partial name="~/Areas/Admin/Views/Shared/_TemplateSetting.cshtml"/>
+    </div>
+
+</div>
+<div class="dark-transparent sidebartoggler"></div>
+<partial name="~/Areas/Admin/Views/Shared/_FooterReferencesPartial.cshtml"/>
+<partial name="~/Areas/Admin/Views/Shared/_NotificationsPartial.cshtml"/>
+<partial name="~/Areas/Admin/Views/Shared/_ModalPartial.cshtml"/>
+<partial name="~/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml"/>
+@await RenderSectionAsync("Scripts", false)
+
+</body>
+</html>

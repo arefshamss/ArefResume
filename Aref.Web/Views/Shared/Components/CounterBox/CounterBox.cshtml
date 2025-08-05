@@ -1,0 +1,20 @@
+﻿@model Aref.Domain.ViewModels.CounterBox.Client.ClientFilterCounterBoxViewModel
+
+@if (Model.Entities is not null && Model.Entities.Any())
+{
+	<div class="pt--60">
+		<div class="row g-5">
+			@foreach (var item in Model.Entities)
+			{
+				<div class="col-lg-3 col-sm-6 col-12 mx-auto">
+					<div class="counter-card tmp-scroll-trigger tmp-fade-in tmponhover animation-order-3">
+						<h3 class="counter counter-title">+<span class="odometer" data-count="@item.Count">00</span>
+						</h3>
+						<p class="counter-para">@item.Title</p>
+					</div>
+				</div>
+			}
+
+		</div>
+	</div>
+}

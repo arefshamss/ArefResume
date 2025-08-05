@@ -1,0 +1,101 @@
+﻿@model Aref.Domain.ViewModels.MyService.Admin.AdminCreateMyServiceViewModel
+
+@{
+    ViewData["Title"] = "My Service";
+}
+
+@section Breadcrumb
+{
+    <admin-breadcrumb page-title="@ViewData["Title"]">
+        <admin-breadcrumb-item asp-area="Admin" asp-controller="MyService" asp-action="List">List</admin-breadcrumb-item>
+        <admin-breadcrumb-item last-active-item="true">Create</admin-breadcrumb-item>
+    </admin-breadcrumb>   
+}
+
+<div class="row">
+    <form asp-area="Admin"
+          asp-controller="MyService"
+          asp-action="Create"
+          method="post"
+          enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body row">
+                        <div class="mb-3 floating-labels">
+
+                            <div class="row align-items-center mt-3">
+                                
+                                <div class="floating-labels col-md-8 mb-4 mt-4 mt-md-0">
+                                    <div class="form-group">
+                                        <input asp-for="Title" class="form-control">
+                                        <span class="bar"></span>
+                                        <label asp-for="Title"></label>
+                                        <span asp-validation-for="Title"></span>
+                                    </div>
+                                </div>
+
+                                <div class="floating-labels col-md-4 mb-4 mt-4 mt-md-0">
+                                    <div class="form-group">
+                                        <input asp-for="DisplayPriority" class="form-control">
+                                        <span class="bar"></span>
+                                        <label asp-for="DisplayPriority"></label>
+                                        <span asp-validation-for="DisplayPriority"></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="floating-labels col-md-12 mb-4 mt-4">
+                                    <div class="form-group">
+                                        <textarea asp-for="Description" rows="5" class="form-control"></textarea>
+                                        <span class="bar"></span>
+                                        <label asp-for="Description"></label>
+                                        <span asp-validation-for="Description"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="floating-labels mb-4 mt-3">
+                            <div class="position-relative">
+                                <label class="fs-2 label-floating mb-2">Icon</label>
+                                <img ImageFile="1" class="w-100 rounded select-image-preview-box"
+                                     src="/Common/images/default.jpg"/>
+                                <label asp-for="Icon"
+                                       class="hover-icon rounded d-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="solar:gallery-edit-broken"
+                                                  class="select-image-icon"></iconify-icon>
+                                </label>
+                                <input type="file" asp-for="Icon" class="d-none"
+                                       accept="image/png, image/jpeg, image/webp" ImageInput="1"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-end gap-2">
+                            <a asp-area="Admin"
+                               asp-controller="MyService"
+                               asp-action="List"
+                               class="btn btn-outline-primary">Back To List</a>
+                            <button type="submit" class="btn btn-outline-success">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,300 @@
+﻿@using Aref.Application.Statics
+@model Aref.Domain.ViewModels.MySkill.Client.ClientFilterMySkillViewModel
+
+
+@{
+    var baseDuration = 0.5;
+    var baseDelay = 0.2;
+    var step = 0.1;
+    int i = 0;
+}
+
+@if (Model.Entities is not null && Model.Entities.Any())
+{
+    <div class="row pb--50 ">
+        <h2 class="custom-title mb-0 tmp-scroll-trigger tmp-fade-in animation-order-1">
+            My Skills <span><img src="/Site/assets/images/custom-line/custom-line.png" alt="custom-line"></span>
+        </h2>
+        @foreach (var item in Model.Entities)
+        {
+            var duration = baseDuration + i * step;
+            var delay = baseDelay + i * step;
+            var durationStr = duration.ToString("0.0") + "s";
+            var delayStr = delay.ToString("0.0") + "s";
+            i++;
+
+            <div class="col-lg-12 col-md-12 col-12 mx-auto">
+                <div class="row align-items-center tmp-scroll-trigger tmp-fade-in"
+                     style="animation-delay: @delayStr; animation-duration: @durationStr;">
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-4">
+                        <div class="tmp-portfolio">
+                            <img class="skill-image" src="@FilePaths.MySkillImagePath@item.ImageUrl" alt="tab-image" />
+                            <div class="portfolio-card-content-wrap">
+                                <div class="content-left">
+                                    <h3 class="portfolio-card-title">@item.Title</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-charts col-lg-10 col-md-9 col-sm-8 col-8">
+                        <h6 class="heading heading-h6">@item.Title</h6>
+                        <div class="progress">
+                            <div class="progress-bar"
+                                 style="width: @item.Percent%; transition: width 0.6s ease-out @delayStr;"
+                                 role="progressbar"
+                                 aria-valuenow="@item.Percent" aria-valuemin="0" aria-valuemax="100">
+                            </div>
+                        </div>
+                        <p class="heading heading-h6">@item.SubTitle</p>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* *@
+@* @{ *@
+@*     var baseDuration = 0.5; *@
+@*     var baseDelay = 0.3; *@
+@*     var step = 0.1; *@
+@*     int i = 0; *@
+@* } *@
+@* *@
+@* @if (Model.Entities is not null && Model.Entities.Any()) *@
+@* { *@
+@*     <div class="inner pb--50"> *@
+@*         <div class="row"> *@
+@*             <div class="col-lg-12"> *@
+@*                 <div class="progress-wrapper"> *@
+@*                     <div class="content row"> *@
+@*                         <h2 class="custom-title mb-0 tmp-scroll-trigger tmp-fade-in animation-order-1"> *@
+@*                             My Skills <span><img src="/Site/assets/images/custom-line/custom-line.png" alt="custom-line"></span> *@
+@*                         </h2> *@
+@*                         @foreach (var item in Model.Entities) *@
+@*                         { *@
+@*                             var duration = baseDuration + i * step; *@
+@*                             var delay = baseDelay + i * step; *@
+@*                             var durationStr = duration.ToString("0.0") + "s"; *@
+@*                             var delayStr = delay.ToString("0.0") + "s"; *@
+@*                             i++; *@
+@* *@
+@*                             <!-- Start Single Progress Charts --> *@
+@*                             <div class="progress-charts col-lg-6"> *@
+@*                                 <h6 class="heading heading-h6">@item.Title</h6> *@
+@*                                 <div class="progress"> *@
+@*                                     <div class="progress-bar wow fadeInLeft" data-wow-duration="@durationStr" *@
+@*                                          data-wow-delay="@delayStr" *@
+@*                                          role="progressbar" *@
+@*                                          style="width: @item.Percent%; visibility: visible; animation-duration: @durationStr; animation-delay: @delayStr; animation-name: fadeInLeft;" *@
+@*                                          aria-valuenow="@item.Percent" aria-valuemin="0" aria-valuemax="100"> *@
+@*                                         $1$ <span class="percent-label">@item.Percent%</span> #1# *@
+@*                                     </div> *@
+@*                                 </div> *@
+@*                             </div> *@
+@*                             <!-- End Single Progress Charts --> *@
+@*                         } *@
+@* *@
+@*                     </div> *@
+@*                 </div> *@
+@*             </div> *@
+@*         </div> *@
+@*     </div> *@
+@* } *@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* <div class="row"> *@
+@*     <div class="col-lg-4 col-md-6 col-sm-12"> *@
+@*         <div *@
+@*             class="tmp-portfolio tmp-scroll-trigger tmp-fade-in animation-order-1"> *@
+@*             <img src="/Site/assets/images/latest-portfolio/tab-image-1.png" *@
+@*                  alt="tab-image"> *@
+@*             <div class="portfolio-card-content-wrap"> *@
+@*                 <div class="content-left"> *@
+@*                     <p class="portfoli-card-para">Development</p> *@
+@*                     <h3 class="portfolio-card-title animated fadeIn"><a *@
+@*                             href="project-details.html">My *@
+@*                             Portfolio of Innovation</a></h3> *@
+@*                 </div> *@
+@*                 <div class="portfolio-btn"> *@
+@*                     <a href="project-details.html" class="tmp-arrow-icon-btn"> *@
+@*                         <div class="btn-inner"> *@
+@*                             <i *@
+@*                                 class="tmp-icon fa-solid fa-arrow-up-right"></i> *@
+@*                             <i *@
+@*                                 class="tmp-icon-bottom fa-solid fa-arrow-up-right"></i> *@
+@*                         </div> *@
+@*                     </a> *@
+@*                 </div> *@
+@*             </div> *@
+@*             <a href="project-details.html" class="over_link"></a> *@
+@*         </div> *@
+@*     </div> *@
+@* *@
+@*     <div class="col-lg-4 col-md-6 col-sm-12"> *@
+@*         <div *@
+@*             class="tmp-portfolio tmp-scroll-trigger tmp-fade-in animation-order-1"> *@
+@*             <img src="/Site/assets/images/latest-portfolio/tab-image-2.png" *@
+@*                  alt="tab-image"> *@
+@*             <div class="portfolio-card-content-wrap"> *@
+@*                 <div class="content-left"> *@
+@*                     <p class="portfoli-card-para">Development</p> *@
+@*                     <h3 class="portfolio-card-title animated fadeIn"><a *@
+@*                             href="project-details.html">A *@
+@*                             Showcase of My Projects</a></h3> *@
+@*                 </div> *@
+@*                 <div class="portfolio-btn"> *@
+@*                     <a href="project-details.html" class="tmp-arrow-icon-btn"> *@
+@*                         <div class="btn-inner"> *@
+@*                             <i *@
+@*                                 class="tmp-icon fa-solid fa-arrow-up-right"></i> *@
+@*                             <i *@
+@*                                 class="tmp-icon-bottom fa-solid fa-arrow-up-right"></i> *@
+@*                         </div> *@
+@*                     </a> *@
+@*                 </div> *@
+@*             </div> *@
+@*             <a href="project-details.html" class="over_link"></a> *@
+@*         </div> *@
+@*     </div> *@
+@* *@
+@*     <div class="col-lg-4 col-md-6 col-sm-12"> *@
+@*         <div *@
+@*             class="tmp-portfolio tmp-scroll-trigger tmp-fade-in animation-order-1"> *@
+@*             <img src="/Site/assets/images/latest-portfolio/tab-image-3.png" *@
+@*                  alt="tab-image"> *@
+@*             <div class="portfolio-card-content-wrap"> *@
+@*                 <div class="content-left"> *@
+@*                     <p class="portfoli-card-para">Development</p> *@
+@*                     <h3 class="portfolio-card-title animated fadeIn"><a *@
+@*                             href="project-details.html">Professional *@
+@*                             Showcase</a></h3> *@
+@*                 </div> *@
+@*                 <div class="portfolio-btn"> *@
+@*                     <a href="project-details.html" class="tmp-arrow-icon-btn"> *@
+@*                         <div class="btn-inner"> *@
+@*                             <i *@
+@*                                 class="tmp-icon fa-solid fa-arrow-up-right"></i> *@
+@*                             <i *@
+@*                                 class="tmp-icon-bottom fa-solid fa-arrow-up-right"></i> *@
+@*                         </div> *@
+@*                     </a> *@
+@*                 </div> *@
+@*             </div> *@
+@*             <a href="project-details.html" class="over_link"></a> *@
+@*         </div> *@
+@*     </div> *@
+@* *@
+@*     <div class="col-lg-4 col-md-6 col-sm-12"> *@
+@*         <div *@
+@*             class="tmp-portfolio tmp-scroll-trigger tmp-fade-in animation-order-1"> *@
+@*             <img src="/Site/assets/images/latest-portfolio/tab-image-4.png" *@
+@*                  alt="tab-image"> *@
+@*             <div class="portfolio-card-content-wrap"> *@
+@*                 <div class="content-left"> *@
+@*                     <p class="portfoli-card-para">Development</p> *@
+@*                     <h3 class="portfolio-card-title animated fadeIn"><a *@
+@*                             href="project-details.html">My *@
+@*                             Journey as a Creator</a></h3> *@
+@*                 </div> *@
+@*                 <div class="portfolio-btn"> *@
+@*                     <a href="project-details.html" class="tmp-arrow-icon-btn"> *@
+@*                         <div class="btn-inner"> *@
+@*                             <i *@
+@*                                 class="tmp-icon fa-solid fa-arrow-up-right"></i> *@
+@*                             <i *@
+@*                                 class="tmp-icon-bottom fa-solid fa-arrow-up-right"></i> *@
+@*                         </div> *@
+@*                     </a> *@
+@*                 </div> *@
+@*             </div> *@
+@*             <a href="project-details.html" class="over_link"></a> *@
+@*         </div> *@
+@*     </div> *@
+@* *@
+@*     <div class="col-lg-4 col-md-6 col-sm-12"> *@
+@*         <div *@
+@*             class="tmp-portfolio tmp-scroll-trigger tmp-fade-in animation-order-1"> *@
+@*             <img src="/Site/assets/images/latest-portfolio/tab-image-5.png" *@
+@*                  alt="tab-image"> *@
+@*             <div class="portfolio-card-content-wrap"> *@
+@*                 <div class="content-left"> *@
+@*                     <p class="portfoli-card-para">Development</p> *@
+@*                     <h3 class="portfolio-card-title animated fadeIn"><a *@
+@*                             href="project-details.html">A *@
+@*                             Journey Through My Work</a></h3> *@
+@*                 </div> *@
+@*                 <div class="portfolio-btn"> *@
+@*                     <a href="project-details.html" class="tmp-arrow-icon-btn"> *@
+@*                         <div class="btn-inner"> *@
+@*                             <i *@
+@*                                 class="tmp-icon fa-solid fa-arrow-up-right"></i> *@
+@*                             <i *@
+@*                                 class="tmp-icon-bottom fa-solid fa-arrow-up-right"></i> *@
+@*                         </div> *@
+@*                     </a> *@
+@*                 </div> *@
+@*             </div> *@
+@*             <a href="project-details.html" class="over_link"></a> *@
+@*         </div> *@
+@*     </div> *@
+@* *@
+@*     <div class="col-lg-4 col-md-6 col-sm-12"> *@
+@*         <div *@
+@*             class="tmp-portfolio tmp-scroll-trigger tmp-fade-in animation-order-1"> *@
+@*             <img src="/Site/assets/images/latest-portfolio/tab-image-6.png" *@
+@*                  alt="tab-image"> *@
+@*             <div class="portfolio-card-content-wrap"> *@
+@*                 <div class="content-left"> *@
+@*                     <p class="portfoli-card-para">Development</p> *@
+@*                     <h3 class="portfolio-card-title animated fadeIn"><a *@
+@*                             href="project-details.html">A *@
+@*                             Portfolio of Art & Dedication</a></h3> *@
+@*                 </div> *@
+@*                 <div class="portfolio-btn"> *@
+@*                     <a href="project-details.html" class="tmp-arrow-icon-btn"> *@
+@*                         <div class="btn-inner"> *@
+@*                             <i *@
+@*                                 class="tmp-icon fa-solid fa-arrow-up-right"></i> *@
+@*                             <i *@
+@*                                 class="tmp-icon-bottom fa-solid fa-arrow-up-right"></i> *@
+@*                         </div> *@
+@*                     </a> *@
+@*                 </div> *@
+@*             </div> *@
+@*             <a href="project-details.html" class="over_link"></a> *@
+@*         </div> *@
+@*     </div> *@
+@* </div> *@

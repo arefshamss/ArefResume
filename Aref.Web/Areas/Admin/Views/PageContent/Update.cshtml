@@ -1,0 +1,65 @@
+﻿@using Aref.Application.Extensions
+@model Aref.Domain.ViewModels.PageContent.Admin.AdminUpdatePageContentViewModel
+
+@{
+    ViewData["Title"] = $"{Model.PageContentType.GetEnumName()}";
+}
+
+@section Breadcrumb
+{
+    <admin-breadcrumb page-title="@ViewData["Title"]">
+        <admin-breadcrumb-item last-active-item="true">Update</admin-breadcrumb-item>
+    </admin-breadcrumb>
+}
+
+
+<div class="row">
+    <form asp-area="Admin"
+          asp-controller="PageContent"
+          asp-action="Update"
+          method="post"
+          enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id"/>
+        <input type="hidden" asp-for="PageContentType"/>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                        <div class="row">
+                            <div class="col-12 align-items-center">
+                                <div class="floating-labels col-md-12 mb-4 mt-4">
+                                    <div class="form-group">
+                                        <input asp-for="Title" class="form-control">
+                                        <span class="bar"></span>
+                                        <label asp-for="Title"></label>
+                                        <span asp-validation-for="Title"></span>
+                                    </div>
+                                </div>
+
+                                <div class="floating-labels col-md-12 mb-4 mt-5">
+                                    <div class="form-group">
+                                        <textarea asp-for="Description" class="form-control" ckeditor></textarea>
+                                        <span class="bar"></span>
+                                        <label asp-for="Description" class="mb-2 label-floating"></label>
+                                        <span asp-validation-for="Description"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-end gap-2">
+                        <button type="submit" class="btn btn-outline-success">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

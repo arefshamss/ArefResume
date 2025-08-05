@@ -1,0 +1,26 @@
+﻿@using Aref.Application.Statics
+@model Aref.Domain.ViewModels.SocialMedia.Client.ClientFilterSocialMediaViewModel
+
+@* <div class="social-area mb--30"> *@
+@*     <div class="social-link justify-content-center"> *@
+@*         <a href="index-10.html#"><i class="fa-brands fa-instagram"></i></a> *@
+@*         <a href="index-10.html#"><i class="fa-brands fa-linkedin-in"></i></a> *@
+@*         <a href="index-10.html#"><i class="fa-brands fa-twitter"></i></a> *@
+@*         <a href="index-10.html#"><i class="fa-brands fa-facebook-f"></i></a> *@
+@*     </div> *@
+@* </div> *@
+
+@if (Model.Entities is not null && Model.Entities.Any())
+{
+    <div class="social-area mb--30">
+        <div class="social-link justify-content-center">
+            @foreach (var item in Model.Entities)
+            {
+                @if (item.IsVisible)
+                {
+                    <a href="@item.Link" target="_blank"><img src="@FilePaths.SocialMediaIconPath@item.IconName"/></a>
+                }
+            }
+        </div>
+    </div>
+}

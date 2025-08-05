@@ -1,0 +1,30 @@
+﻿@using Aref.Application.Statics
+@model Aref.Domain.ViewModels.MyService.Client.ClientFilterMyServiceViewModel
+
+@if (Model.Entities is not null && Model.Entities.Any())
+{
+    <div class="about-us-section-card row g-5">
+        <h3 class="custom-title tmp-scroll-trigger tmp-fade-in animation-order-1">What I Do?
+                
+                <span><img src="/Site/assets/images/custom-line/custom-line.png"
+                           alt="custom-line"></span>
+        </h3>
+        @foreach (var item in Model.Entities)
+        {
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12 mx-auto">
+                <div class="about-us-card tmp-scroll-trigger tmp-fade-in tmponhover animation-order-5">
+                    <div class="card-head">
+                        <div class="logo-img">
+                            <div class="circle-wrapper">
+                            <img class="rounded-pill" src="@FilePaths.MyServiceIconPath@item.IconName" alt="@item.Title"/>
+                        </div>
+                        </div>
+                        <h3 class="card-title">@item.Title</h3>
+                    </div>
+                    <p class="card-para">
+                    <p>@item.Description</p>
+                </div>
+            </div>
+        }
+    </div>
+}

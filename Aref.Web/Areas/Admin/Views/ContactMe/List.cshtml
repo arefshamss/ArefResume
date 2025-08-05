@@ -1,0 +1,175 @@
+﻿@using Aref.Application.Extensions
+@using Aref.Domain.Enums.Common
+@using Aref.Domain.Shared
+@using Aref.Infra.Data.Statics
+@model Aref.Domain.ViewModels.ContactMe.Admin.AdminFilterContactMeViewModel
+
+@{
+    ViewData["Title"] = "Contact Me";
+}
+
+@section Breadcrumb
+{
+    <admin-breadcrumb page-title="@ViewData["Title"]">
+        <admin-breadcrumb-item last-active-item="true">List</admin-breadcrumb-item>
+    </admin-breadcrumb>
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="mb-4">
+                    <h2 class="card-title">Filter</h2>
+                </div>
+                <div>
+                    <form asp-area="Admin"
+                          asp-controller="ContactMe"
+                          asp-action="List"
+                          method="get"
+                          id="filter-search"
+                          class="floating-labels"
+                          no-validation>
+                        <input type="hidden" asp-for="Page">
+                        <div class="row filter-form">
+
+                            <div class="form-group col-12 col-md-4 mb-4">
+                                <select class="form-control form-select" asp-for="DeleteStatus"
+                                        asp-items="@Html.GetEnumSelectList<DeleteStatus>()"></select>
+                                <span class="bar"></span>
+                                <label asp-for="DeleteStatus"></label>
+                            </div>
+                            
+                            <div class="form-group col-12 col-md-4 mb-4">
+                                <select class="form-control form-select" asp-for="FilterOrderBy"
+                                        asp-items="@Html.GetEnumSelectList<FilterOrderBy>()"></select>
+                                <span class="bar"></span>
+                                <label asp-for="FilterOrderBy"></label>
+                            </div>
+
+                            <div class="form-group col-12 col-md-4 mb-4">
+                                <input asp-for="Subject" type="text" class="form-control">
+                                <span class="bar"></span>
+                                <label asp-for="Subject"></label>
+                            </div>
+
+                            <div class="col-12 mt-3 d-md-flex">
+                                <div class="col-12 col-md-2 p-0 me-1">
+                                    <button class="btn btn-rounded btn-outline-primary w-100" type="submit">Search
+                                    </button>
+                                </div>
+                                @if (Model.HasFilters())
+                                {
+                                    <div class="col-12 col-md-2 p-0 mt-3 mt-md-0">
+                                        <a class="btn btn-rounded btn-danger w-100 text-nowrap"
+                                           asp-area="Admin"
+                                           asp-controller="ContactMe"
+                                           asp-action="List">Remove Filters
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="mb-3 d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="card-title">@ViewData["Title"]</h2>
+                    </div>
+                </div>
+                @if (Model.Entities is not null && Model.Entities.Any())
+                {
+                    <div class="table-responsive mb-4 border rounded-1">
+
+                        <table class="table text-nowrap mb-0 align-middle">
+                            <thead class="text-dark fs-4">
+                            <tr>
+                                <th>
+                                    <h6 class="fs-4 fw-semibold mb-0">Sender</h6>
+                                </th>
+                                <th>
+                                    <h6 class="fs-4 fw-semibold mb-0">Mobile</h6>
+                                </th>
+                                <th>
+                                    <h6 class="fs-4 fw-semibold mb-0">Created Date</h6>
+                                </th>
+                                <th>
+                                    <h6 class="fs-4 fw-semibold mb-0">Operations</h6>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach (var item in Model.Entities)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.FullName
+                                    </td>
+                                    <td>
+                                        @item.Mobile
+                                    </td>
+                                    <td>
+                                        @item.CreatedDate.ToShamsiDateTime()
+                                    </td>
+
+                                    <td>
+                                        @if (item.IsDeleted)
+                                        {
+                                            <a invoke-permission="@PermissionsName.DeleteOrRecoverContactMe"
+                                               class="text-info cursor-pointer"
+                                               data-bs-toggle="tooltip"
+                                               data-bs-custom-class="custom-tooltip"
+                                               data-bs-placement="top"
+                                               data-bs-title="Recover"
+                                               onclick="ConfirmRecover(this , '@Url.Action("DeleteOrRecover", new { id = item.Id })')">
+                                                <iconify-icon class="fs-6"
+                                                              icon="solar:archive-up-line-duotone"></iconify-icon>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a invoke-permission="@PermissionsName.ContactMeDetails"
+                                               asp-area="Admin"
+                                               asp-controller="ContactMe"
+                                               asp-action="Details"
+                                               asp-route-id="@item.Id"
+                                               class="text-info removeAfterDelete @(item.IsDeleted ? "d-none" : "")"
+                                               title="Details">
+                                                <iconify-icon icon="fluent:eye-28-regular" width="22"
+                                                              height="22"></iconify-icon>
+                                            </a>
+                                            <a invoke-permission="@PermissionsName.DeleteOrRecoverContactMe"
+                                               class="text-danger cursor-pointer"
+                                               data-bs-toggle="tooltip"
+                                               data-bs-custom-class="custom-tooltip"
+                                               data-bs-placement="top"
+                                               data-bs-title="Delete"
+                                               onclick="ConfirmDelete(this , '@Url.Action("DeleteOrRecover", new { id = item.Id })')">
+                                                <iconify-icon class="fs-6"
+                                                              icon="solar:trash-bin-minimalistic-outline"></iconify-icon>
+                                            </a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
+                    <partial name="_PagingPartial" model="@Model.GetCurrentPaging()"/>
+
+                }
+                else
+                {
+                    <partial name="_NotFoundPartial"/>
+                }
+            </div>
+        </div>
+    </div>
+</div>

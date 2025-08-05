@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+@section Breadcrumb{
+    <admin-breadcrumb page-title="@ViewData["Title"]"></admin-breadcrumb>
+}
+
+<div class="row">
+    
+    @await Component.InvokeAsync("AdminMyInfo")
+
+    @await Component.InvokeAsync("AdminPageContentSetting")
+    
+</div>

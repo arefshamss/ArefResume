@@ -1,0 +1,18 @@
+﻿@using Aref.Domain.Enums.Captcha
+@model Aref.Domain.ViewModels.Captcha.ClientCaptchaViewModel
+@switch (Model.CaptchaType)
+{
+    case CaptchaType.GoogleRecaptchaV2:
+        <script src='https://www.google.com/recaptcha/api.js?hl=en'></script>
+        break;
+    case CaptchaType.GoogleRecaptchaV3:
+        <script src="https://www.google.com/recaptcha/api.js?render=@Model.SiteKey&hl=en"></script>
+        <script>
+            grecaptcha.ready(function () {
+                grecaptcha.execute('@Model.SiteKey', { action: 'submit' }).then(function (token) {
+                    $(".captchaInput").val(token);
+                });
+            });
+        </script>
+        break;
+}

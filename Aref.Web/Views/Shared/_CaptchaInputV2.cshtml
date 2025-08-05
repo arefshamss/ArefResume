@@ -1,0 +1,9 @@
+﻿@model Aref.Domain.ViewModels.Captcha.ClientCaptchaViewModel
+
+<div class="clearfix">
+<div class="col-md-12 col-sm-12 col-xs-12 captcha-col mb-3 d-flex justify-content-center">
+    <div class="g-recaptcha" data-sitekey="@Model.SiteKey"></div>
+    <input asp-for="SecretKey" type="hidden" />
+    <input type="hidden" asp-for="CaptchaToken" id="captchaInput" class="captchaInput" />
+</div>
+</div>

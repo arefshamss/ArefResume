@@ -1,0 +1,80 @@
+﻿@using Aref.Application.Extensions
+@using Aref.Application.Statics
+@model Aref.Domain.ViewModels.MyProject.Client.ClientFilterMyProjectViewModel
+
+@if (Model.Entities is not null && Model.Entities.Any())
+{
+
+    <div class="row g-5">
+    @foreach (var item in Model.Entities)
+    {
+        <div class="col-lg-6 col-md-6 col-12">
+            <div
+                class="blog-card-style-two tmp-scroll-trigger tmponhover tmp-fade-in animation-order-1">
+
+                <div class="blog-card-img">
+                    <div class="img-box">
+                        <a>
+                            <img class="img-primary hidden-on-mobile project-image"
+                                 src="@FilePaths.MyProjectImagePath@item.ImageUrl"
+                                 alt="Project Thumbnail">
+                            <img class="img-secondary project-image"
+                                 src="@FilePaths.MyProjectImagePath@item.ImageUrl"
+                                 alt="Project Thumbnail">
+                        </a>
+                    </div>
+                </div>
+                <div class="blog-content-wrap">
+                    <div class="blog-tags">
+                        <ul>
+                            <li>
+                                <a>
+                                    <i
+                                        class="fa-regular fa-user"></i>@item.Developer</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3 class="blog-title">
+                        <a>@item.Title</a></h3>
+
+                    <div class="row">
+                        <div class="tmp-button-here col-auto px-2">
+                            <a class="tmp-btn hover-icon-reverse radius-round btn-border btn-md"
+                               href="@item.Link" target="_blank">
+                                <span class="icon-reverse-wrapper">
+                                    <span class="btn-text">@item.LinkButtonTitle</span>
+                                    <span class="btn-icon">
+                                        <i
+                                            class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                    <span class="btn-icon">
+                                        <i
+                                            class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                        @if (!item.SecondLink.IsNullOrEmptyOrWhiteSpace() || !item.SecondLinkButtonTitle.IsNullOrEmptyOrWhiteSpace())
+                        {
+                            <div class="tmp-button-here col-auto px-2">
+                                <a class="tmp-btn hover-icon-reverse radius-round btn-border btn-md"
+                                   href="@item.SecondLink" target="_blank">
+                                    <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">@item.SecondLinkButtonTitle</span>
+                                        <span class="btn-icon">
+                                            <i
+                                                class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                        <span class="btn-icon">
+                                            <i
+                                                class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                                    </span>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+}

@@ -1,0 +1,169 @@
+﻿@using Aref.Application.Statics
+@model Aref.Domain.ViewModels.MyInfo.Admin.AdminUpdateMyInfoViewModel
+
+
+@{
+    ViewData["Title"] = "My Info";
+}
+
+@section Breadcrumb
+{
+    <admin-breadcrumb page-title="@ViewData["Title"]">
+        <admin-breadcrumb-item last-active-item="true">Update</admin-breadcrumb-item>
+    </admin-breadcrumb>
+}
+
+<div class="row">
+    <form asp-area="Admin"
+          asp-controller="MyInfo"
+          asp-action="Update"
+          method="post"
+          enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id"/>
+        <input type="hidden" asp-for="ImageUrl"/>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body row">
+                        <div class="mb-3">
+
+                            <div class="row align-items-center mt-3">
+
+                                <div class="floating-labels col-md-6 mb-4 mt-4">
+                                    <div class="form-group">
+                                        <input asp-for="FullName" class="form-control">
+                                        <span class="bar"></span>
+                                        <label asp-for="FullName"></label>
+                                        <span asp-validation-for="FullName"></span>
+                                    </div>
+                                </div>
+
+                                <div class="floating-labels col-md-6 mb-4 mt-4">
+                                    <div class="form-group">
+                                        <input asp-for="Title" class="form-control">
+                                        <span class="bar"></span>
+                                        <label asp-for="Title"></label>
+                                        <span asp-validation-for="Title"></span>
+                                    </div>
+                                </div>
+
+                                <div class="floating-labels col-md-6 mb-4 mt-4">
+                                    <div class="form-group">
+                                        <input asp-for="Mobile" class="form-control">
+                                        <span class="bar"></span>
+                                        <label asp-for="Mobile"></label>
+                                        <span asp-validation-for="Mobile"></span>
+                                    </div>
+                                </div>
+                                <div class="floating-labels col-md-6 mb-4 mt-4">
+                                    <div class="form-group">
+                                        <input asp-for="Email" class="form-control">
+                                        <span class="bar"></span>
+                                        <label asp-for="Email"></label>
+                                        <span asp-validation-for="Email"></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-12 mb-3 mt-1">
+                                    <label asp-for="Cv" class="form-label"></label>
+                                    <input class="form-control" type="file" asp-for="Cv">
+                                    <span asp-validation-for="Cv"></span>
+                                </div>    
+                                
+                                @if (Model.CvUrl is not null)
+                                {
+                                    <div class="col-md-12">
+                                        <a download
+                                           class="btn form-control-static justify-content-center w-100 btn mb-1 btn-outline-info d-flex align-items-center"
+                                           href="@(FilePaths.MyInfoFilePath + Model.CvUrl)">
+                                            Download Current CV
+                                        </a>
+                                    </div>
+                                }
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 align-items-center">
+                                <div class="col-md-12 mb-4 mt-4">
+                                    <div class="form-group mb-3">
+                                        <div class="form-check form-switch">
+                                            <input no-validation class="form-check-input success" type="checkbox"
+                                                   asp-for="TitleVisibility">
+                                            <label class="checkbox-label" asp-for="TitleVisibility"></label>
+                                            <span asp-validation-for="TitleVisibility"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <div class="form-check form-switch">
+                                            <input no-validation class="form-check-input success" type="checkbox"
+                                                   asp-for="MobileVisibility">
+                                            <label class="checkbox-label" asp-for="MobileVisibility"></label>
+                                            <span asp-validation-for="MobileVisibility"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <div class="form-check form-switch">
+                                            <input no-validation class="form-check-input success" type="checkbox"
+                                                   asp-for="EmailVisibility">
+                                            <label class="checkbox-label" asp-for="EmailVisibility"></label>
+                                            <span asp-validation-for="EmailVisibility"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <div class="form-check form-switch">
+                                            <input no-validation class="form-check-input success" type="checkbox"
+                                                   asp-for="CvVisibility">
+                                            <label class="checkbox-label" asp-for="CvVisibility"></label>
+                                            <span asp-validation-for="CvVisibility"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="floating-labels mb-4 mt-3">
+                            <div class="position-relative">
+                                <label class="fs-2 label-floating mb-2">Image</label>
+                                <img ImageFile="1" class="w-100 rounded select-image-preview-box"
+                                     src="@Model.ImageUrl"/>
+                                <label asp-for="Image"
+                                       class="hover-icon rounded d-flex align-items-center justify-content-center">
+                                    <iconify-icon icon="solar:gallery-edit-broken"
+                                                  class="select-image-icon"></iconify-icon>
+                                </label>
+                                <input type="file" asp-for="Image" class="d-none"
+                                       accept="image/png, image/jpeg, image/webp" ImageInput="1"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-end gap-2">
+                            <button type="submit" class="btn btn-outline-success">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+</div>

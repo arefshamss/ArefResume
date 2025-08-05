@@ -1,0 +1,20 @@
+﻿@using Aref.Application.Extensions
+@model Aref.Domain.ViewModels.PageContent.Admin.AdminUpdatePageContentViewModel
+
+@if (!string.IsNullOrWhiteSpace(Model?.Title) || !string.IsNullOrWhiteSpace(Model?.Description))
+{
+	<div class="section-head text-align-left mb--50">
+		<h2 class="custom-title mb--20 tmp-scroll-trigger tmp-fade-in animation-order-1">
+			@Model.PageContentType.GetEnumName()
+			<span>
+				<img src="/Site/assets/images/custom-line/custom-line.png"
+				     alt="custom-line"></span>
+		</h2>
+		<h2 class="title split-collab tmp-scroll-trigger tmp-fade-in animation-order-2">
+			@Model.Title
+		</h2>
+		<div class="description tmp-scroll-trigger tmp-fade-in animation-order-3">
+			@Html.Raw(Model.Description)
+		</div>
+	</div>
+}

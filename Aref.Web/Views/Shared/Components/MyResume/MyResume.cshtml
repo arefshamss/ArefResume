@@ -1,0 +1,44 @@
+﻿@using Aref.Domain.Enums.MyResume
+@model Aref.Domain.ViewModels.MyResume.Client.ClientFilterMyResumeViewModel
+
+@if (Model.Entities is not null && Model.Entities.Any())
+{
+    <div class="inner pb--30">
+        <h2 class="custom-title mb--20 tmp-scroll-trigger tmp-fade-in animation-order-1">
+            @if (Model.ResumeType == FilterMyResumeType.Education)
+            {
+                @:Education
+                
+                <span><img src="/Site/assets/images/custom-line/custom-line.png"
+                           alt="custom-line"></span>
+            }
+            else if (Model.ResumeType == FilterMyResumeType.Experience)
+            {
+                @:Experience
+                
+                <span><img src="/Site/assets/images/custom-line/custom-line.png"
+                           alt="custom-line"></span>
+            }
+            else if (Model.ResumeType == FilterMyResumeType.Courses)
+            {
+                @:Certification & Courses
+                
+                <span><img src="/Site/assets/images/custom-line/custom-line.png"
+                           alt="custom-line"></span>
+            }
+        </h2>
+        <div class="row g-5">
+            @foreach (var item in Model.Entities)
+            {
+                <div class="col-lg-6 col-sm-6">
+                    <div class="education-experience-card tmp-scroll-trigger tmponhover tmp-fade-in animation-order-1">
+                        <h4 class="edu-sub-title">@item.Title</h4>
+                        <h2 class="edu-title">@item.Years</h2>
+                        <div class="edu-para">@item.Description</div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+

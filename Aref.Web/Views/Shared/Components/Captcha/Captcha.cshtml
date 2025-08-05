@@ -1,0 +1,18 @@
+﻿@using Aref.Domain.Enums.Captcha
+@model Aref.Domain.ViewModels.Captcha.ClientCaptchaViewModel
+
+@if (Model != null)
+{
+    switch (Model.CaptchaType)
+    {
+        case CaptchaType.GoogleRecaptchaV2:
+            <partial name="_CaptchaInputV2" model="Model" />
+            <partial name="_CaptchaScript" model="Model" />
+            break;
+        case CaptchaType.GoogleRecaptchaV3:
+            <partial name="_CaptchaInputV3" model="Model" />
+            <partial name="_CaptchaScript" model="Model" />
+            break;
+    }
+    <input asp-for="CaptchaType" type="hidden" />
+}

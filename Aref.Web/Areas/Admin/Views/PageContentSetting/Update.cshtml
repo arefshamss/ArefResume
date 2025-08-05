@@ -1,0 +1,85 @@
+﻿@model Aref.Domain.ViewModels.PageContentSetting.Admin.AdminUpdatePageContentSettingViewModel
+
+@{
+    ViewData["Title"] = "Site Navbar Visibility";
+}
+
+@section Breadcrumb
+{
+    <admin-breadcrumb page-title="@ViewData["Title"]">
+        <admin-breadcrumb-item last-active-item="true">Update</admin-breadcrumb-item>
+    </admin-breadcrumb>
+}
+
+
+<div class="row">
+    <form asp-area="Admin"
+          asp-controller="PageContentSetting"
+          asp-action="Update"
+          method="post"
+          enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id"/>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div>
+                        <div class="row">
+                            <div class="col-12 align-items-center">
+                                <div class="col-md-12 mb-4 mt-4">
+                                    
+                                    <div class="form-group mb-3">
+                                        <div class="form-check form-switch">
+                                            <input no-validation class="form-check-input success" type="checkbox" asp-for="AboutMeVisibility">
+                                            <label class="checkbox-label" asp-for="AboutMeVisibility"></label>
+                                            <span asp-validation-for="AboutMeVisibility"></span>
+                                        </div>
+                                    </div>                                       
+                                    <div class="form-group mb-3">
+                                        <div class="form-check form-switch">
+                                            <input no-validation class="form-check-input success" type="checkbox" asp-for="MyResumeVisibility">
+                                            <label class="checkbox-label" asp-for="MyResumeVisibility"></label>
+                                            <span asp-validation-for="MyResumeVisibility"></span>
+                                        </div>
+                                    </div>                                    
+                                    <div class="form-group mb-3">
+                                        <div class="form-check form-switch">
+                                            <input no-validation class="form-check-input success" type="checkbox" asp-for="MySkillVisibility">
+                                            <label class="checkbox-label" asp-for="MySkillVisibility"></label>
+                                            <span asp-validation-for="MySkillVisibility"></span>
+                                        </div>
+                                    </div>                                    
+                                    <div class="form-group mb-3">
+                                        <div class="form-check form-switch">
+                                            <input no-validation class="form-check-input success" type="checkbox" asp-for="MyProjectVisibility">
+                                            <label class="checkbox-label" asp-for="MyProjectVisibility"></label>
+                                            <span asp-validation-for="MyProjectVisibility"></span>
+                                        </div>
+                                    </div>                                    
+                                    <div class="form-group">
+                                        <div class="form-check form-switch">
+                                            <input no-validation class="form-check-input success" type="checkbox" asp-for="ContactMeVisibility">
+                                            <label class="checkbox-label" asp-for="ContactMeVisibility"></label>
+                                            <span asp-validation-for="ContactMeVisibility"></span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+                        </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-end gap-2">
+                        <button type="submit" class="btn btn-outline-success">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

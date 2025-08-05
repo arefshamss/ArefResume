@@ -1,0 +1,47 @@
+﻿@model Aref.Domain.ViewModels.CounterBox.Admin.AdminUpdateCounterBoxViewModel
+
+<div class="modal-form">
+    <form asp-area="Admin"
+          asp-controller="CounterBox"
+          asp-action="Update"
+          asp-ajax="true"
+          asp-ajax-method="Post"
+          asp-ajax-success="onAjaxSuccess(data, status, xhr);"
+          asp-ajax-close-modal-onSuccess="Current"
+          asp-ajax-substitution="filter-search">
+        <input asp-for="Id" type="hidden"/>
+        <div class="row">
+
+            <div class="floating-labels col-12 mb-4">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <input asp-for="Title" class="form-control">
+                        <span class="bar"></span>
+                        <label asp-for="Title"></label>
+                        <span asp-validation-for="Title"></span>
+                    </div>
+                    
+                    <div class="form-group col-md-3 mt-md-0 mt-5">
+                        <input asp-for="Count" type="text" class="form-control">
+                        <span class="bar"></span>
+                        <label asp-for="Count"></label>
+                        <span asp-validation-for="Count"></span>
+                    </div>       
+                    
+                    <div class="form-group col-md-3 mt-md-0 mt-5">
+                        <input asp-for="DisplayPriority" type="text" class="form-control">
+                        <span class="bar"></span>
+                        <label asp-for="DisplayPriority"></label>
+                        <span asp-validation-for="DisplayPriority"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="mt-4 col-5">
+                <button class="btn btn-rounded btn-outline-success w-100" type="submit">Save Changes</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,475 @@
+﻿@using Aref.Infra.Data.Statics
+<aside class="side-mini-panel with-vertical">
+    <div class="iconbar">
+        <div>
+            <div class="mini-nav">
+                <div class="brand-logo d-flex align-items-center justify-content-center">
+                    <a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)">
+                        <iconify-icon icon="solar:hamburger-menu-line-duotone" class="fs-7"></iconify-icon>
+                    </a>
+                </div>
+                <ul class="mini-nav-ul" data-simplebar>
+                    <li class="mini-nav-item" id="mini-1" data-area-name="Admin"
+                        invoke-permission="@PermissionsName.AdminDashboard | @PermissionsName.UpdateMyInfo | @PermissionsName.SocialMediaManagement | @PermissionsName.UserManagement">
+                        <a href="javascript:void(0)"
+                           data-bs-toggle="tooltip"
+                           data-bs-custom-class="custom-tooltip"
+                           data-bs-placement="right"
+                           data-bs-title="Dashboard"
+                           data-bs-trigger="hover">
+                            <iconify-icon icon="solar:layers-line-duotone" class="fs-7"></iconify-icon>
+                        </a>
+                    </li>
+                    
+                    <li class="mini-nav-item" id="mini-2" data-area-name="Site"
+                        invoke-permission="@PermissionsName.PageContentSettingManagement | @PermissionsName.PageContentManagement | @PermissionsName.MyServiceManagement | @PermissionsName.CounterBoxManagement| @PermissionsName.MyResumeManagement | @PermissionsName.MySkillManagement |@PermissionsName.MyProjectManagement | @PermissionsName.ContactMeManagement">
+                        <a href="javascript:void(0)"
+                           data-bs-toggle="tooltip"
+                           data-bs-custom-class="custom-tooltip"
+                           data-bs-placement="right"
+                           data-bs-title="Site"
+                           data-bs-trigger="hover">
+                            <iconify-icon icon="solar:card-2-outline" class="fs-7"></iconify-icon>
+                        </a>
+                    </li>
+
+                    
+                    <li class="mini-nav-item" id="mini-3" data-area-name="Privacy"
+                        invoke-permission="@PermissionsName.RoleManagement | @PermissionsName.CaptchaManagement">
+                        <a href="javascript:void(0)"
+                           data-bs-toggle="tooltip"
+                           data-bs-custom-class="custom-tooltip"
+                           data-bs-placement="right"
+                           data-bs-title="Privacy"
+                           data-bs-trigger="hover">
+                            <iconify-icon icon="solar:shield-user-broken" class="fs-7"></iconify-icon>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+            <div class="sidebarmenu">
+                <div class="brand-logo d-flex align-items-center justify-content-center nav-logo">
+                    <a class="text-nowrap logo-img"
+                       asp-area="Admin"
+                       asp-controller="Home"
+                       asp-action="Index">
+                        <img src="/Admin/assets/images/logos/logo.svg" alt="Logo">
+                    </a>
+                </div>
+                
+                <nav class="sidebar-nav d-block" id="menu-right-mini-1" data-target-area="Admin" data-simplebar>
+                    <ul class="sidebar-menu" id="sidebarnav">
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.AdminDashboard">
+                            <a class="sidebar-link" aria-expanded="false"
+                               asp-area="Admin"
+                               asp-controller="Home"
+                               asp-action="Index">
+                                <iconify-icon icon="material-symbols:dashboard-outline-rounded" width="24"
+                                              height="24"></iconify-icon>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        
+                        <li invoke-permission="@PermissionsName.AdminDashboard">
+                            <hr/>
+                        </li>
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.UpdateMyInfo">
+                            <a class="sidebar-link" aria-expanded="false"
+                               asp-area="Admin"
+                               asp-controller="MyInfo"
+                               asp-action="Update">
+                                <iconify-icon icon="solar:info-square-broken" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">My Info</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item"
+                            invoke-permission="@PermissionsName.SocialMediaManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="solar:share-circle-line-duotone" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">Social Media</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item"
+                                    invoke-permission="@PermissionsName.SocialMediaList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="SocialMedia"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>
+                                        View All
+                                    </a>
+                                </li>
+                                <li class="sidebar-item"
+                                    invoke-permission="@PermissionsName.CreateSocialMedia">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="SocialMedia"
+                                       asp-action="Create">
+                                        <span class="icon-small"></span>
+                                        Add New
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.UserManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="solar:users-group-rounded-broken" width="24"
+                                              height="24"></iconify-icon>
+                                <span class="hide-menu">User</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.UserList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="User"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>View All
+                                    </a>
+                                </li>
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.CreateUser">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="User"
+                                       asp-action="Create">
+                                        <span class="icon-small"></span>Add New
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+
+                        <li invoke-permission="@PermissionsName.UpdateMyInfo | @PermissionsName.SocialMediaManagement | @PermissionsName.UserManagement">
+                            <hr/>
+                        </li>
+                    </ul>
+                </nav>     
+                
+                <nav class="sidebar-nav d-block" id="menu-right-mini-2" data-target-area="Site" data-simplebar>
+                    <ul class="sidebar-menu">
+                        <li class="nav-small-cap" invoke-permission="@PermissionsName.PageContentSettingManagement">
+                            <span class="hide-menu">Site</span>
+                        </li>
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.UpdatePageContentSetting">
+                            <a class="sidebar-link" aria-expanded="false"
+                               asp-area="Admin"
+                               asp-controller="PageContentSetting"
+                               asp-action="Update">
+                                <iconify-icon icon="fluent:list-rtl-20-filled" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">Site Navbar</span>
+                            </a>
+                        </li>
+                        <li invoke-permission="@PermissionsName.PageContentSettingManagement">
+                            <hr/>
+                        </li>
+                        
+                        <li class="nav-small-cap" invoke-permission="@PermissionsName.PageContentManagement | @PermissionsName.MyServiceManagement | @PermissionsName.CounterBoxManagement">
+                            <span class="hide-menu">About Me</span>
+                        </li>
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.UpdatePageContent">
+                            <a class="sidebar-link" aria-expanded="false"
+                               asp-area="Admin"
+                               asp-controller="PageContent"
+                               asp-action="Update"
+                               asp-route-id="1">
+                                <iconify-icon icon="fluent:panel-left-header-28-regular" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">About Me</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item"
+                            invoke-permission="@PermissionsName.MyServiceManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="hugeicons:work" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">My Services</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item"
+                                    invoke-permission="@PermissionsName.MyServiceList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="MyService"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>
+                                        View All
+                                    </a>
+                                </li>
+                                <li class="sidebar-item"
+                                    invoke-permission="@PermissionsName.CreateMyService">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="MyService"
+                                       asp-action="Create">
+                                        <span class="icon-small"></span>
+                                        Add New
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item" 
+                            invoke-permission="@PermissionsName.CounterBoxManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="solar:rewind-10-seconds-back-broken" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">Counter Box</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.CounterBoxList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="CounterBox"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>
+                                        View All
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li invoke-permission="@PermissionsName.PageContentManagement | @PermissionsName.MyServiceManagement | @PermissionsName.CounterBoxManagement">
+                            <hr/>
+                        </li>
+                        
+                         <li class="nav-small-cap" invoke-permission="@PermissionsName.PageContentManagement | @PermissionsName.MyResumeManagement">
+                            <span class="hide-menu">My Resume</span>
+                        </li>
+                        
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.UpdatePageContent">
+                            <a class="sidebar-link" aria-expanded="false"
+                               asp-area="Admin"
+                               asp-controller="PageContent"
+                               asp-action="Update"
+                               asp-route-id="2">
+                                <iconify-icon icon="fluent:panel-left-header-28-regular" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">My Resume</span>
+                            </a>
+                        </li>
+                        
+                        <li class="sidebar-item" 
+                            invoke-permission="@PermissionsName.MyResumeManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="pepicons-pencil:cv" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">Resume Items</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.MyResumeList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="MyResume"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>
+                                        View All
+                                    </a>
+                                </li>
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.CreateMyResume">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="MyResume"
+                                       asp-action="Create">
+                                        <span class="icon-small"></span>
+                                        Add New
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                      
+                        <li invoke-permission="@PermissionsName.PageContentManagement | @PermissionsName.MyResumeManagement">
+                            <hr/>
+                        </li>
+                        
+                        
+                        <li class="nav-small-cap" invoke-permission="@PermissionsName.PageContentManagement | @PermissionsName.MySkillManagement">
+                            <span class="hide-menu">My Skills</span>
+                        </li>
+                        
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.UpdatePageContent">
+                            <a class="sidebar-link" aria-expanded="false"
+                               asp-area="Admin"
+                               asp-controller="PageContent"
+                               asp-action="Update"
+                               asp-route-id="3">
+                                <iconify-icon icon="fluent:panel-left-header-28-regular" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">My Skills</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item"
+                            invoke-permission="@PermissionsName.MySkillManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="material-symbols-light:interests-outline-rounded" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">Skill Items</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item"
+                                    invoke-permission="@PermissionsName.MySkillList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="MySkill"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>
+                                        View All
+                                    </a>
+                                </li>
+                                <li class="sidebar-item"
+                                    invoke-permission="@PermissionsName.CreateMySkill">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="MySkill"
+                                       asp-action="Create">
+                                        <span class="icon-small"></span>
+                                        Add New
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li invoke-permission="@PermissionsName.PageContentManagement | @PermissionsName.MySkillManagement">
+                            <hr/>
+                        </li>                        
+
+
+                        <li class="nav-small-cap" invoke-permission="@PermissionsName.PageContentManagement | @PermissionsName.MyProjectManagement">
+                            <span class="hide-menu">My Projects</span>
+                        </li>
+                        
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.UpdatePageContent">
+                            <a class="sidebar-link" aria-expanded="false"
+                               asp-area="Admin"
+                               asp-controller="PageContent"
+                               asp-action="Update"
+                               asp-route-id="4">
+                                <iconify-icon icon="fluent:panel-left-header-28-regular" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">My Projects</span>
+                            </a>
+                        </li>   
+                        
+                        <li class="sidebar-item"
+                            invoke-permission="@PermissionsName.MyProjectManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="ph:projector-screen-chart" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">Project Items</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item"
+                                    invoke-permission="@PermissionsName.MyProjectList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="MyProject"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>
+                                        View All
+                                    </a>
+                                </li>
+                                <li class="sidebar-item"
+                                    invoke-permission="@PermissionsName.CreateMyProject">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="MyProject"
+                                       asp-action="Create">
+                                        <span class="icon-small"></span>
+                                        Add New
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li invoke-permission="@PermissionsName.PageContentManagement | @PermissionsName.MyProjectManagement">
+                            <hr/>
+                        </li>
+
+
+                        <li class="nav-small-cap" invoke-permission="@PermissionsName.UpdatePageContent | @PermissionsName.ContactMeManagement">
+                            <span class="hide-menu">Contact Me</span>
+                        </li>
+                        
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.UpdatePageContent">
+                            <a class="sidebar-link" aria-expanded="false"
+                               asp-area="Admin"
+                               asp-controller="PageContent"
+                               asp-action="Update"
+                               asp-route-id="5">
+                                <iconify-icon icon="fluent:panel-left-header-28-regular" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">Contact Me</span>
+                            </a>
+                        </li>
+                        
+                        <li class="sidebar-item" 
+                            invoke-permission="@PermissionsName.ContactMeManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="mynaui:envelope" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">Messages</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.ContactMeList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="ContactMe"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>
+                                        View All
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li invoke-permission="@PermissionsName.UpdatePageContent | @PermissionsName.ContactMeManagement">
+                            <hr/>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <nav class="sidebar-nav d-block" id="menu-right-mini-3" data-target-area="Privacy" data-simplebar>
+                    <ul class="sidebar-menu">
+                        <li class="nav-small-cap" invoke-permission="@PermissionsName.RoleManagement | @PermissionsName.CaptchaManagement">
+                            <span class="hide-menu">Privacy</span>
+                        </li>
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.RoleManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="icon-park-outline:personal-privacy" width="22" height="22"></iconify-icon>
+                                <span class="hide-menu">Role-Permission</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.RoleList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="Role"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>All Roles
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item" invoke-permission="@PermissionsName.CaptchaManagement">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false">
+                                <iconify-icon icon="solar:shield-keyhole-broken" width="24" height="24"></iconify-icon>
+                                <span class="hide-menu">Captcha</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.UpdateCaptchaSetting">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="CaptchaSetting"
+                                       asp-action="Update">
+                                        <span class="icon-small"></span>
+                                        Types
+                                    </a>
+                                </li>
+                                <li class="sidebar-item" invoke-permission="@PermissionsName.CaptchaList">
+                                    <a class="sidebar-link"
+                                       asp-area="Admin"
+                                       asp-controller="Captcha"
+                                       asp-action="List">
+                                        <span class="icon-small"></span>
+                                        View All
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li invoke-permission="@PermissionsName.RoleManagement | @PermissionsName.CaptchaManagement">
+                            <hr/>
+                        </li>
+                    </ul>
+                </nav>
+                
+            </div>
+        </div>
+    </div>
+</aside>

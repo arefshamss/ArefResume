@@ -1,0 +1,92 @@
+﻿@using Aref.Application.Extensions
+@using Aref.Infra.Data.Statics
+@model List<Aref.Domain.ViewModels.Captcha.AdminCaptchaViewModel>
+
+@{
+    ViewData["Title"] = "Captcha";
+}
+
+@section Breadcrumb
+{
+    <admin-breadcrumb page-title="@ViewData["Title"]">
+        <admin-breadcrumb-item last-active-item="true">List</admin-breadcrumb-item>
+    </admin-breadcrumb>
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-2 align-items-center">
+                    <div>
+                        <h5>@ViewData["Title"]</h5>
+                    </div>
+                    @* <div class="ms-auto flex-shrink-0">
+                        <a class="btn bg-primary-subtle text-primary btn-md"
+                           asp-area="Admin"
+                           asp-controller="Captcha"
+                           asp-action="Create">
+                            Create"]
+                        </a>
+                    </div> *@
+                </div>
+                @if (Model != null && Model.Any())
+                {
+                    <div class="table-responsive border rounded-1">
+                        <table class="table text-nowrap customize-table mb-0 align-middle">
+                            <thead class="text-dark fs-4">
+                                <tr>
+                                    <th>
+                                        <h6 class="fs-4 fw-semibold mb-0">CaptchaType</h6>
+                                    </th>
+                                    <th>
+                                        <h6 class="fs-4 fw-semibold mb-0">Status</h6>
+                                    </th>
+                                    <th>
+                                        <h6 class="fs-4 fw-semibold mb-0">Operations</h6>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model ?? [])
+                                {
+                                    <tr>
+                                        <td>
+                                            <p class="mb-0 fw-normal fs-4">@item.CaptchaType.GetEnumName()</p>
+                                        </td>
+                                        <td>
+                                            <p class="mb-0 fw-normal fs-4">
+                                                <span class="fw-bold badge py-10 @(item.IsActive ? "badge-success" : "badge-danger")">
+                                                    @(item.IsActive ? "Active" : "NotActive")
+                                                </span>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <a class="text-warning  cursor-pointer" invoke-permission="@PermissionsName.UpdateCaptcha"
+                                               data-bs-toggle="tooltip"
+                                               data-bs-custom-class="custom-tooltip"
+                                               data-bs-placement="top"
+                                               data-bs-title="Update"
+                                               asp-area="Admin"
+                                               asp-controller="Captcha"
+                                               asp-action="Update"
+                                               asp-route-id="@item.Id">
+                                                <iconify-icon class="fs-6"
+                                                              icon="solar:pen-new-square-outline"></iconify-icon>
+                                            </a>
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <partial name="~/Areas/Admin/Views/Shared/_NotFoundPartial.cshtml" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

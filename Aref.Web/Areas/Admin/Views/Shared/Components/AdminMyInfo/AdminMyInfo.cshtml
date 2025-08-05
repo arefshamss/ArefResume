@@ -1,0 +1,88 @@
+﻿@using Aref.Application.Statics
+@model Aref.Domain.ViewModels.MyInfo.Admin.AdminUpdateMyInfoViewModel
+
+
+<div class="col-md-3 dashboard">
+    <div class="card">
+        <div class="card-body">
+            <div class="floating-labels">
+                <div class="position-relative">
+                    <img ImageFile="1" class="w-100 rounded select-image-preview-box"
+                         src="@Model.ImageUrl"/>
+                </div>
+            </div>
+            <div class="row align-items-center">
+
+                <div class="floating-labels col-md-12">
+                    <div class="form-group">
+                        <input disabled asp-for="FullName" class="form-control text-center">
+                        <span class="bar"></span>
+                    </div>
+                </div>
+
+                <div class="floating-labels col-md-12">
+                    <div class="form-group">
+                        <input disabled asp-for="Title" class="form-control text-center">
+                        <span class="bar"></span>
+                    </div>
+                </div>
+
+                <div class="floating-labels col-md-12">
+                    <div class="form-group">
+                        <input disabled asp-for="Mobile" class="form-control text-center">
+                        <span class="bar"></span>
+                    </div>
+                </div>
+                <div class="floating-labels col-md-12">
+                    <div class="form-group">
+                        <input disabled asp-for="Email" class="form-control text-center">
+                        <span class="bar"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-3 dashboard">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 align-items-center">
+                    <div class="col-md-12">
+                        <div class="form-group mb-3">
+                            <div class="form-check form-switch">
+                                <input disabled no-validation class="form-check-input success" type="checkbox"
+                                       asp-for="TitleVisibility">
+                                <label class="checkbox-label">Title</label>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <div class="form-check form-switch">
+                                <input disabled no-validation class="form-check-input success" type="checkbox"
+                                       asp-for="MobileVisibility">
+                                <label class="checkbox-label">Mobile</label>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <div class="form-check form-switch">
+                                <input disabled no-validation class="form-check-input success" type="checkbox"
+                                       asp-for="EmailVisibility">
+                                <label class="checkbox-label">Email</label>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <div class="form-check form-switch">
+                                <input disabled no-validation class="form-check-input success" type="checkbox"
+                                       asp-for="CvVisibility">
+                                <label class="checkbox-label">CV Download</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            
