@@ -18,7 +18,7 @@ public class MyInfo:BaseEntity<short>
     
     public bool EmailVisibility { get; set; }
     
-    public string ImageUrl { get; set; }   
+    public string? ImageUrl { get; set; }   
     
     public string? CvUrl { get; set; }
     

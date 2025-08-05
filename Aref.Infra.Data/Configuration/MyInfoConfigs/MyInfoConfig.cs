@@ -34,7 +34,7 @@ public class MyInfoConfig: IEntityTypeConfiguration<MyInfo>
 
         builder.Property(c => c.ImageUrl)
             .HasMaxLength(300)
-            .IsRequired();
+            .IsRequired(false);
         
         builder.Property(c => c.CvUrl)
             .HasMaxLength(300)

@@ -13,7 +13,6 @@ public static class MyInfoSeeds
             Mobile = "+989001112233",
             Email = "resume@sample.com",
             Title = "Sample Title",
-            ImageUrl = "aref-shamspour.png",
             MobileVisibility = false,
             EmailVisibility = true,
             CvVisibility = false,
