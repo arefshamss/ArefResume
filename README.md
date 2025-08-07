@@ -3,28 +3,28 @@ This is a portfolio-driven resume website built with a 5-layer architecture usin
 
 ## 🧱 Key Features
 **🧾 About Me**
-A detailed section introducing my background, career goals, and profile
+- A detailed section introducing my background, career goals, and profile
 
 **🛠 Services I Offer**
-A flexible section listing the services I provide as a developer
+- A flexible section listing the services I provide as a developer
 
 **📚 Resume, Education & Courses**
-Full details of my formal education and training
+- Full details of my formal education and training
 
 **💡 Skills Overview**
-A categorized and visual representation of my technical skills
+- A categorized and visual representation of my technical skills
 
 **🧰 Completed Projects**
-A portfolio section showing real projects I’ve built
+- A portfolio section showing real projects I’ve built
 
 **📬 Contact Form**
-Users can reach out via a contact form (protected with reCAPTCHA)
+- Users can reach out via a contact form (protected with reCAPTCHA)
 
 **🧩 Flexible Google reCAPTCHA Integration**
-Secure contact functionality with dynamic CAPTCHA configuration
+- Secure contact functionality with dynamic CAPTCHA configuration
 
 **🔐 Role & Permission Management**
-Backend support for admin-level control and access restrictions
+- Backend support for admin-level control and access restrictions
 
 ## 🧑‍💻 Tech Stack
 - ASP.NET Core
